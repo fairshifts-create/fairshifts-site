@@ -1,6 +1,24 @@
 (function () {
   'use strict';
 
+  /* ---------- theme toggle (light/dark) ---------- */
+  /* The <head> of every page already set the initial data-theme attribute
+     before first paint, to avoid a flash of the wrong theme. This just
+     wires up the button click and remembers the choice for next time. */
+  var THEME_KEY = 'fairshifts-theme';
+  var root = document.documentElement;
+  document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+    btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+      document.querySelectorAll('.theme-toggle').forEach(function (b) {
+        b.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+      });
+    });
+  });
+
   /* ---------- mobile nav toggle ---------- */
   var navToggle = document.querySelector('.nav-toggle');
   var navLinks = document.querySelector('.nav-links');
