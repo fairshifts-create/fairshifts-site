@@ -112,7 +112,8 @@
   }
 
   openModalBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
       openModal(btn.getAttribute('data-open-modal'));
     });
   });
