@@ -1,6 +1,66 @@
 (function () {
   'use strict';
 
+  /* ---------- language switch (i18n) ---------- */
+  /* Runs first, synchronously, so translated text (if Arabic is the saved/
+     detected language) appears as soon as this script executes — the <head>
+     script already set lang/dir before first paint to avoid a direction flash;
+     this closes the remaining gap for text content. */
+  var LANG_KEY = 'fairshifts-lang';
+  var i18n = window.FAIRSHIFTS_I18N || { en: {}, ar: {} };
+
+  function getLang() {
+    return document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+  }
+
+  function applyLanguage(lang) {
+    var strings = i18n[lang] || i18n.en;
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (strings[key] !== undefined) el.textContent = strings[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (strings[key] !== undefined) el.innerHTML = strings[key];
+    });
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria-label');
+      if (strings[key] !== undefined) el.setAttribute('aria-label', strings[key]);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-alt');
+      if (strings[key] !== undefined) el.setAttribute('alt', strings[key]);
+    });
+    var titleEl = document.querySelector('title[data-i18n-title]');
+    if (titleEl) {
+      var titleKey = titleEl.getAttribute('data-i18n-title');
+      if (strings[titleKey] !== undefined) document.title = strings[titleKey];
+    }
+  }
+
+  function setLanguage(lang) {
+    var root = document.documentElement;
+    root.classList.add('i18n-fade');
+    setTimeout(function () {
+      applyLanguage(lang);
+      requestAnimationFrame(function () {
+        root.classList.remove('i18n-fade');
+      });
+    }, 150);
+    localStorage.setItem(LANG_KEY, lang);
+  }
+
+  applyLanguage(getLang());
+
+  document.querySelectorAll('.lang-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setLanguage(getLang() === 'ar' ? 'en' : 'ar');
+    });
+  });
+
   /* ---------- theme toggle (light/dark) ---------- */
   /* The <head> of every page already set the initial data-theme attribute
      before first paint, to avoid a flash of the wrong theme. This just

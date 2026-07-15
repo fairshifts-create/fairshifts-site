@@ -7,16 +7,20 @@
 (function(){
   var t = localStorage.getItem('fairshifts-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', t);
+  var l = localStorage.getItem('fairshifts-lang') || ((navigator.language || '').slice(0,2) === 'ar' ? 'ar' : 'en');
+  document.documentElement.setAttribute('lang', l);
+  document.documentElement.setAttribute('dir', l === 'ar' ? 'rtl' : 'ltr');
 })();
 </script>
-<title>Terms of Service — FairShifts</title>
+<title data-i18n-title="meta.titleTerms">Terms of Service — FairShifts</title>
 <meta name="description" content="FairShifts Terms of Service.">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="translations.js"></script>
 </head>
 <body>
 
@@ -24,14 +28,17 @@
   <div class="nav-inner">
     <a href="index.html" class="brand">Fair<span>Shifts</span></a>
     <nav class="nav-links" id="nav-links">
-      <a href="index.html">← Back to home</a>
+      <a href="index.html" data-i18n="nav.backHome">← Back to home</a>
     </nav>
     <div class="nav-right">
-      <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language / تبديل اللغة">
+        <span>العربية / EN</span>
+      </button>
+      <button class="theme-toggle" aria-label="Toggle dark mode" data-i18n-aria-label="nav.toggleDark" aria-pressed="false">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
       </button>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" data-i18n-aria-label="nav.menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -39,29 +46,29 @@
 </header>
 
 <main class="legal">
-  <div class="placeholder-notice">
+  <div class="placeholder-notice" data-i18n="terms.placeholderNotice">
     This is placeholder text. Replace everything below with your finalized Terms of Service — see the "how to edit" notes for exactly which file this is.
   </div>
-  <h1>Terms of Service</h1>
-  <p class="updated">Last updated: [add date]</p>
+  <h1 data-i18n="terms.h1">Terms of Service</h1>
+  <p class="updated" data-i18n="legal.updated">Last updated: [add date]</p>
 
-  <h2>Overview</h2>
-  <p>[Placeholder] These terms govern your use of the FairShifts done-for-you rostering service and, once launched, the FairShifts Pro and Business software plans.</p>
+  <h2 data-i18n="terms.overviewH2">Overview</h2>
+  <p data-i18n="terms.overviewBody">[Placeholder] These terms govern your use of the FairShifts done-for-you rostering service and, once launched, the FairShifts Pro and Business software plans.</p>
 
-  <h2>The service</h2>
-  <p>[Placeholder] Describe exactly what's included: roster turnaround time (48 hours), the one included revision round, and what counts as a "revision" versus a new order.</p>
+  <h2 data-i18n="terms.serviceH2">The service</h2>
+  <p data-i18n="terms.serviceBody">[Placeholder] Describe exactly what's included: roster turnaround time (48 hours), the one included revision round, and what counts as a "revision" versus a new order.</p>
 
-  <h2>Payment</h2>
-  <p>[Placeholder] Describe billing terms for the Done-for-You monthly service, what happens with the free first roster, refund policy, and cancellation terms.</p>
+  <h2 data-i18n="terms.paymentH2">Payment</h2>
+  <p data-i18n="terms.paymentBody">[Placeholder] Describe billing terms for the Done-for-You monthly service, what happens with the free first roster, refund policy, and cancellation terms.</p>
 
-  <h2>Your responsibilities</h2>
-  <p>[Placeholder] Describe what the customer needs to provide (staff list, shift rules) and their responsibility for the accuracy of that information.</p>
+  <h2 data-i18n="terms.responsibilitiesH2">Your responsibilities</h2>
+  <p data-i18n="terms.responsibilitiesBody">[Placeholder] Describe what the customer needs to provide (staff list, shift rules) and their responsibility for the accuracy of that information.</p>
 
-  <h2>Limitation of liability</h2>
-  <p>[Placeholder] Standard liability limitation language — consider having a lawyer review this section specifically.</p>
+  <h2 data-i18n="terms.liabilityH2">Limitation of liability</h2>
+  <p data-i18n="terms.liabilityBody">[Placeholder] Standard liability limitation language — consider having a lawyer review this section specifically.</p>
 
-  <h2>Contact</h2>
-  <p>Questions about these terms can be sent to <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.</p>
+  <h2 data-i18n="legal.contactH2">Contact</h2>
+  <p data-i18n-html="terms.contactBodyHtml">Questions about these terms can be sent to <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.</p>
 </main>
 
 <footer>
@@ -69,19 +76,19 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="index.html" class="brand">Fair<span>Shifts</span></a>
-        <p>Done-for-you staff rostering for care homes and shift-based teams.</p>
+        <p data-i18n="footer.tagline">Done-for-you staff rostering for care homes and shift-based teams.</p>
       </div>
       <nav class="foot-links">
-        <a href="index.html#pain">Pain Points</a>
-        <a href="index.html#how-it-works">How It Works</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#faq">FAQ</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms</a>
+        <a href="index.html#pain" data-i18n="nav.painPoints">Pain Points</a>
+        <a href="index.html#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
+        <a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="terms.html" data-i18n="footer.terms">Terms</a>
         <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>
       </nav>
     </div>
-    <div class="foot-bottom">© 2026 FairShifts. All rights reserved.</div>
+    <div class="foot-bottom" data-i18n="footer.copyright">© 2026 FairShifts. All rights reserved.</div>
   </div>
 </footer>
 
