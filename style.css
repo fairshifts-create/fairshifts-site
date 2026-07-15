@@ -43,7 +43,8 @@
 [data-theme="dark"] .card,
 [data-theme="dark"] details.faq,
 [data-theme="dark"] .shot,
-[data-theme="dark"] .modal{
+[data-theme="dark"] .modal,
+[data-theme="dark"] .email-popover{
   background:#11241a;
 }
 [data-theme="dark"] .price-card{
@@ -132,8 +133,11 @@ button{font-family:inherit;cursor:pointer}
   display:flex;align-items:center;justify-content:space-between;
   padding:16px 24px;max-width:var(--maxw);margin:0 auto;
 }
-.brand{font-family:'Sora',sans-serif;font-weight:700;font-size:1.25rem;color:var(--ink)}
-.brand span{color:var(--blue)}
+.brand{display:inline-flex;align-items:center}
+.brand-logo{height:46px;width:auto;display:block}
+.brand-logo-dark{display:none}
+[data-theme="dark"] .brand-logo-light{display:none}
+[data-theme="dark"] .brand-logo-dark{display:block}
 .nav-links{display:flex;gap:30px;align-items:center}
 .nav-links a{color:var(--ink);font-weight:500;font-size:.94rem;transition:color .15s}
 .nav-links a:hover{color:var(--blue)}
@@ -275,7 +279,8 @@ button{font-family:inherit;cursor:pointer}
 .price-card--popular{border:2px solid var(--blue);box-shadow:var(--shadow)}
 .price-card--dfy{background:var(--premium-bg);border-color:var(--premium-bg);color:#fff}
 .price-card--dfy .price-card-sub,
-.price-card--dfy .price-amount small{color:#aebbd6}
+.price-card--dfy .price-amount small,
+.price-card--dfy .price-usd{color:#aebbd6}
 .price-card--dfy .price-list li{color:#e7ecf7}
 .price-card--dfy .price-list li::before{color:#6fa4ff}
 
@@ -290,8 +295,12 @@ button{font-family:inherit;cursor:pointer}
 
 .price-card h3{font-size:1.3rem;margin-top:6px}
 .price-card-sub{color:var(--muted);font-size:.9rem;margin-top:6px}
-.price-amount{font-family:'Sora',sans-serif;font-size:clamp(1.55rem,6vw,2.1rem);font-weight:700;margin:18px 0 6px;white-space:nowrap}
+.price-amount{font-family:'Sora',sans-serif;font-size:clamp(1.55rem,6vw,2.1rem);font-weight:700;margin:18px 0 0;white-space:nowrap}
 .price-amount small{font-size:.95rem;font-weight:500;color:var(--muted);white-space:nowrap}
+.price-usd{
+  margin:2px 0 6px;font-size:.82rem;font-weight:500;color:var(--muted);
+  transition:color .25s ease;
+}
 .price-list{margin:18px 0 30px;flex:1}
 .price-list li{
   padding:8px 0;padding-inline-start:26px;position:relative;font-size:.92rem;color:var(--ink);
@@ -328,6 +337,9 @@ details.faq .a{padding:0 24px 22px;color:var(--muted);font-size:.95rem}
 .final-cta h2{color:#fff;font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:14px}
 .final-cta p{color:#c7d0e0;max-width:520px;margin:0 auto 32px}
 .final-cta .hero-actions{margin-top:0}
+.final-cta p.final-cta-note{margin-top:16px;margin-bottom:0;font-size:.88rem}
+.final-cta-note .email-inline{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.final-cta-note .email-inline:hover{color:var(--blue-light)}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--border);padding:44px 0 30px}
@@ -392,6 +404,28 @@ footer{border-top:1px solid var(--border);padding:44px 0 30px}
   display:flex;align-items:center;justify-content:center;transition:background .15s;
 }
 .lightbox-close:hover{background:rgba(255,255,255,.22)}
+
+/* ---------- email options popover ---------- */
+.email-popover{
+  position:fixed;z-index:1200;min-width:240px;max-width:calc(100vw - 24px);
+  background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);padding:8px;
+  opacity:0;transform:translateY(-6px) scale(.97);pointer-events:none;
+  transition:opacity .15s ease,transform .15s ease,background-color .25s ease,border-color .25s ease;
+}
+.email-popover.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.email-popover-item{
+  display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:8px;
+  border:none;background:none;color:var(--ink);font-family:inherit;font-size:.92rem;font-weight:500;
+  text-align:start;cursor:pointer;transition:background-color .15s ease,color .15s ease;
+}
+.email-popover-item:hover,.email-popover-item:focus-visible{background:var(--blue-light);color:var(--blue);outline:none}
+.email-popover-item svg{flex-shrink:0;color:var(--muted);transition:color .15s ease}
+.email-popover-item:hover svg,.email-popover-item:focus-visible svg{color:var(--blue)}
+.email-popover-item.copied,.email-popover-item.copied svg{color:var(--green-text)}
+.email-popover-item .icon-check{display:none}
+.email-popover-item.copied .icon-copy{display:none}
+.email-popover-item.copied .icon-check{display:block}
 
 /* ---------- placeholder pages (privacy / terms) ---------- */
 .legal{max-width:760px;margin:0 auto;padding:60px 24px 100px}

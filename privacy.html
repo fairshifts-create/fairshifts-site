@@ -15,7 +15,12 @@
 <title data-i18n-title="meta.titlePrivacy">Privacy Policy — FairShifts</title>
 <meta name="description" content="FairShifts Privacy Policy.">
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +31,16 @@
 
 <header class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="brand">Fair<span>Shifts</span></a>
+    <a href="index.html" class="brand">
+      <picture>
+        <source srcset="images/logo-light-mode.webp" type="image/webp">
+        <img src="images/logo-light-mode.png" alt="FairShifts" class="brand-logo brand-logo-light" width="116" height="46">
+      </picture>
+      <picture>
+        <source srcset="images/logo-dark-mode.webp" type="image/webp">
+        <img src="images/logo-dark-mode.png" alt="FairShifts" class="brand-logo brand-logo-dark" width="116" height="46">
+      </picture>
+    </a>
     <nav class="nav-links" id="nav-links">
       <a href="index.html" data-i18n="nav.backHome">← Back to home</a>
     </nav>
@@ -65,14 +79,23 @@
   <p data-i18n="privacy.retentionBody">[Placeholder] Describe how long you keep uploaded staff lists and roster files, and how customers can request deletion.</p>
 
   <h2 data-i18n="legal.contactH2">Contact</h2>
-  <p data-i18n-html="privacy.contactBodyHtml">Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.</p>
+  <p data-i18n-html="privacy.contactBodyHtml">Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.</p>
 </main>
 
 <footer>
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="index.html" class="brand">Fair<span>Shifts</span></a>
+        <a href="index.html" class="brand">
+      <picture>
+        <source srcset="images/logo-light-mode.webp" type="image/webp">
+        <img src="images/logo-light-mode.png" alt="FairShifts" class="brand-logo brand-logo-light" width="116" height="46">
+      </picture>
+      <picture>
+        <source srcset="images/logo-dark-mode.webp" type="image/webp">
+        <img src="images/logo-dark-mode.png" alt="FairShifts" class="brand-logo brand-logo-dark" width="116" height="46">
+      </picture>
+    </a>
         <p data-i18n="footer.tagline">Done-for-you staff rostering for care homes and shift-based teams.</p>
       </div>
       <nav class="foot-links">
@@ -82,12 +105,29 @@
         <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
         <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
         <a href="terms.html" data-i18n="footer.terms">Terms</a>
-        <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>
+        <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>
       </nav>
     </div>
     <div class="foot-bottom" data-i18n="footer.copyright">© 2026 FairShifts. All rights reserved.</div>
   </div>
 </footer>
+
+<!-- ============ EMAIL OPTIONS POPOVER ============ -->
+<div class="email-popover" id="email-popover" role="menu" aria-hidden="true" aria-label="Email options" data-i18n-aria-label="emailPopover.ariaLabel">
+  <button type="button" class="email-popover-item" data-action="gmail" role="menuitem">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+    <span data-i18n="emailPopover.gmail">Open in Gmail</span>
+  </button>
+  <a href="mailto:fairshifts@gmail.com" class="email-popover-item" data-action="mailapp" role="menuitem">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8m18 0-8.4 6a1 1 0 0 1-1.2 0L3 8m18 0a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1"/></svg>
+    <span data-i18n="emailPopover.mailApp">Open in your mail app</span>
+  </a>
+  <button type="button" class="email-popover-item" data-action="copy" role="menuitem">
+    <svg class="icon-copy" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+    <svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+    <span data-i18n="emailPopover.copy">Copy email address</span>
+  </button>
+</div>
 
 <script src="script.js"></script>
 </body>

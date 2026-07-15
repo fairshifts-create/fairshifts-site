@@ -74,6 +74,7 @@ window.FAIRSHIFTS_I18N = {
     'pricing.badgePopular': 'Most popular',
     'pricing.badgeLive': 'Available now',
     'pricing.perMonth': '/ month',
+    'pricing.currencyUSD': 'USD',
     'pricing.pro.title': 'Pro',
     'pricing.pro.sub': 'For a single location, up to 30 staff',
     'pricing.pro.amount': '75 AED',
@@ -123,6 +124,7 @@ window.FAIRSHIFTS_I18N = {
     'finalCta.h2': 'Ready for a roster that just works?',
     'finalCta.lead': "Your first roster is free — see what FairShifts can do before you commit to anything.",
     'finalCta.emailInstead': 'Email us instead',
+    'finalCta.orEmail': 'Or reach us directly:',
 
     /* footer */
     'footer.tagline': 'Done-for-you staff rostering for care homes and shift-based teams.',
@@ -133,7 +135,7 @@ window.FAIRSHIFTS_I18N = {
     /* modals (shared) */
     'modal.close': 'Close',
     'modal.labelEmail': 'Email',
-    'modal.errorHtml': 'Something went wrong — please email us directly at <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'modal.errorHtml': 'Something went wrong — please email us directly at <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* modal: free roster */
     'modalFree.title': 'Get your first roster free',
@@ -156,6 +158,13 @@ window.FAIRSHIFTS_I18N = {
     /* lightbox */
     'lightbox.ariaLabel': 'Image preview',
 
+    /* email popover */
+    'emailPopover.ariaLabel': 'Email options',
+    'emailPopover.gmail': 'Open in Gmail',
+    'emailPopover.mailApp': 'Open in your mail app',
+    'emailPopover.copy': 'Copy email address',
+    'emailPopover.copied': 'Copied!',
+
     /* legal pages (shared) */
     'legal.updated': 'Last updated: [add date]',
     'legal.contactH2': 'Contact',
@@ -171,7 +180,7 @@ window.FAIRSHIFTS_I18N = {
     'privacy.useBody': '[Placeholder] Information you send us is used solely to build, validate, and deliver your staff roster, and to communicate with you about your order.',
     'privacy.retentionH2': 'Data retention',
     'privacy.retentionBody': '[Placeholder] Describe how long you keep uploaded staff lists and roster files, and how customers can request deletion.',
-    'privacy.contactBodyHtml': 'Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'privacy.contactBodyHtml': 'Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* terms.html */
     'terms.placeholderNotice': 'This is placeholder text. Replace everything below with your finalized Terms of Service — see the "how to edit" notes for exactly which file this is.',
@@ -186,7 +195,7 @@ window.FAIRSHIFTS_I18N = {
     'terms.responsibilitiesBody': '[Placeholder] Describe what the customer needs to provide (staff list, shift rules) and their responsibility for the accuracy of that information.',
     'terms.liabilityH2': 'Limitation of liability',
     'terms.liabilityBody': '[Placeholder] Standard liability limitation language — consider having a lawyer review this section specifically.',
-    'terms.contactBodyHtml': 'Questions about these terms can be sent to <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'terms.contactBodyHtml': 'Questions about these terms can be sent to <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* page titles */
     'meta.titleIndex': 'FairShifts — Done-for-You Staff Rosters, Delivered in 48 Hours',
@@ -264,6 +273,7 @@ window.FAIRSHIFTS_I18N = {
     'pricing.badgePopular': 'الأكثر طلبًا',
     'pricing.badgeLive': 'متاح الآن',
     'pricing.perMonth': '/ شهريًا',
+    'pricing.currencyUSD': 'دولار',
     'pricing.pro.title': 'برو',
     'pricing.pro.sub': 'لموقع واحد، حتى 30 موظفًا',
     'pricing.pro.amount': '75 درهم',
@@ -313,6 +323,7 @@ window.FAIRSHIFTS_I18N = {
     'finalCta.h2': 'هل أنت مستعد لجدول يعمل دون أي متاعب؟',
     'finalCta.lead': 'أول جدول لك مجاني — جرّب ما يمكن لـ FairShifts تقديمه قبل أن تلتزم بأي شيء.',
     'finalCta.emailInstead': 'راسلنا عبر البريد الإلكتروني',
+    'finalCta.orEmail': 'أو راسلنا مباشرة:',
 
     /* footer */
     'footer.tagline': 'خدمة جدولة موظفين متكاملة لدور الرعاية والفرق ذات المناوبات.',
@@ -323,7 +334,7 @@ window.FAIRSHIFTS_I18N = {
     /* modals (shared) */
     'modal.close': 'إغلاق',
     'modal.labelEmail': 'البريد الإلكتروني',
-    'modal.errorHtml': 'حدث خطأ ما — يرجى مراسلتنا مباشرة عبر <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'modal.errorHtml': 'حدث خطأ ما — يرجى مراسلتنا مباشرة عبر <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* modal: free roster */
     'modalFree.title': 'احصل على أول جدول مجانًا',
@@ -346,6 +357,13 @@ window.FAIRSHIFTS_I18N = {
     /* lightbox */
     'lightbox.ariaLabel': 'معاينة الصورة',
 
+    /* email popover */
+    'emailPopover.ariaLabel': 'خيارات البريد الإلكتروني',
+    'emailPopover.gmail': 'افتح في Gmail',
+    'emailPopover.mailApp': 'افتح في تطبيق البريد لديك',
+    'emailPopover.copy': 'نسخ البريد الإلكتروني',
+    'emailPopover.copied': 'تم النسخ!',
+
     /* legal pages (shared) */
     'legal.updated': 'آخر تحديث: [أضف التاريخ]',
     'legal.contactH2': 'تواصل معنا',
@@ -361,7 +379,7 @@ window.FAIRSHIFTS_I18N = {
     'privacy.useBody': '[نص مؤقت] تُستخدم المعلومات التي ترسلها لنا حصريًا لإعداد جدول موظفيك والتحقق منه وتسليمه، وللتواصل معك بخصوص طلبك.',
     'privacy.retentionH2': 'الاحتفاظ بالبيانات',
     'privacy.retentionBody': '[نص مؤقت] وضّح المدة التي تحتفظ فيها بقوائم الموظفين وملفات الجداول المرفوعة، وكيف يمكن للعملاء طلب حذفها.',
-    'privacy.contactBodyHtml': 'يمكن إرسال الأسئلة حول هذه السياسة إلى <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'privacy.contactBodyHtml': 'يمكن إرسال الأسئلة حول هذه السياسة إلى <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* terms.html */
     'terms.placeholderNotice': 'هذا نص مؤقت. استبدل كل ما يلي بشروط الخدمة النهائية الخاصة بك — راجع ملاحظات "كيفية التعديل" لمعرفة الملف بالضبط.',
@@ -376,7 +394,7 @@ window.FAIRSHIFTS_I18N = {
     'terms.responsibilitiesBody': '[نص مؤقت] وضّح ما يجب على العميل تقديمه (قائمة الموظفين، قواعد المناوبات) ومسؤوليته عن دقة تلك المعلومات.',
     'terms.liabilityH2': 'تحديد المسؤولية',
     'terms.liabilityBody': '[نص مؤقت] صياغة قياسية لتحديد المسؤولية — يُنصح بمراجعة هذا القسم تحديدًا من قِبل محامٍ مختص.',
-    'terms.contactBodyHtml': 'يمكن إرسال الأسئلة حول هذه الشروط إلى <a href="mailto:fairshifts@gmail.com">fairshifts@gmail.com</a>.',
+    'terms.contactBodyHtml': 'يمكن إرسال الأسئلة حول هذه الشروط إلى <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.',
 
     /* page titles */
     'meta.titleIndex': 'FairShifts — جداول موظفين جاهزة خلال 48 ساعة',

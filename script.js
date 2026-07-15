@@ -39,6 +39,8 @@
       var titleKey = titleEl.getAttribute('data-i18n-title');
       if (strings[titleKey] !== undefined) document.title = strings[titleKey];
     }
+
+    renderPriceUsd(strings);
   }
 
   function setLanguage(lang) {
@@ -51,6 +53,24 @@
       });
     }, 150);
     localStorage.setItem(LANG_KEY, lang);
+  }
+
+  /* ---------- pricing: AED -> USD conversion ---------- */
+  /* Single source of truth for the exchange rate — update this one constant
+     if the peg ever changes, every card's USD line recomputes from it.
+     Re-run from applyLanguage() too, so the "USD" label re-translates and
+     the figure recomputes on every language switch. */
+  var AED_PER_USD = 3.6725;
+
+  function renderPriceUsd(strings) {
+    var usdLabel = strings['pricing.currencyUSD'] || 'USD';
+    document.querySelectorAll('.price-amount[data-aed]').forEach(function (amountEl) {
+      var aed = parseFloat(amountEl.getAttribute('data-aed'));
+      if (!aed) return;
+      var usd = Math.round(aed / AED_PER_USD);
+      var usdLine = amountEl.parentElement.querySelector('[data-usd-line]');
+      if (usdLine) usdLine.textContent = '≈ $' + usd + ' ' + usdLabel;
+    });
   }
 
   applyLanguage(getLang());
@@ -185,10 +205,144 @@
     if (closeBtn) closeBtn.addEventListener('click', function () { closeModal(overlay); });
   });
 
+  /* ---------- email options popover ---------- */
+  /* One shared popover, repositioned per trigger, so every "email us" /
+     contact mailto: link on the site (nav, footer, final CTA, legal pages,
+     form-error fallbacks) gets the same working options instead of a dead
+     mailto: tab. Uses the i18n() helper above to read the current language's
+     strings, since this popover's copy has to track the active language too. */
+  var EMAIL_ADDRESS = 'fairshifts@gmail.com';
+  var GMAIL_COMPOSE_URL = 'https://mail.google.com/mail/?view=cm&fm=1&to=' + encodeURIComponent(EMAIL_ADDRESS);
+  var emailPopover = document.getElementById('email-popover');
+  var activeEmailTrigger = null;
+  var copyRevertTimer = null;
+
+  function positionEmailPopover(trigger) {
+    if (!emailPopover) return;
+    var r = trigger.getBoundingClientRect();
+    emailPopover.style.visibility = 'hidden';
+    emailPopover.classList.add('open');
+    var pw = emailPopover.offsetWidth;
+    var ph = emailPopover.offsetHeight;
+    emailPopover.classList.remove('open');
+    emailPopover.style.visibility = '';
+
+    var margin = 12;
+    var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+    var left = isRtl ? r.right - pw : r.left;
+    left = Math.max(margin, Math.min(left, window.innerWidth - pw - margin));
+
+    var top = r.bottom + 8;
+    if (top + ph > window.innerHeight - margin) {
+      top = r.top - ph - 8;
+      if (top < margin) top = margin;
+    }
+    emailPopover.style.left = left + 'px';
+    emailPopover.style.top = top + 'px';
+  }
+
+  function openEmailPopover(trigger) {
+    if (!emailPopover) return;
+    activeEmailTrigger = trigger;
+    positionEmailPopover(trigger);
+    emailPopover.classList.add('open');
+    emailPopover.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeEmailPopover() {
+    if (!emailPopover || !emailPopover.classList.contains('open')) return;
+    emailPopover.classList.remove('open');
+    emailPopover.setAttribute('aria-hidden', 'true');
+    activeEmailTrigger = null;
+  }
+
+  function copyEmailAddress(btn) {
+    var span = btn.querySelector('span');
+    var strings = i18n[getLang()] || i18n.en;
+    var original = strings['emailPopover.copy'];
+    var copiedText = strings['emailPopover.copied'];
+
+    function showCopied() {
+      btn.classList.add('copied');
+      if (span) span.textContent = copiedText;
+      clearTimeout(copyRevertTimer);
+      copyRevertTimer = setTimeout(function () {
+        btn.classList.remove('copied');
+        if (span) span.textContent = original;
+        closeEmailPopover();
+      }, 1400);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL_ADDRESS).then(showCopied, function () {
+        fallbackCopy(EMAIL_ADDRESS);
+        showCopied();
+      });
+    } else {
+      fallbackCopy(EMAIL_ADDRESS);
+      showCopied();
+    }
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (err) { /* no-op: clipboard unavailable */ }
+    document.body.removeChild(ta);
+  }
+
+  if (emailPopover) {
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('.email-trigger');
+      if (trigger) {
+        e.preventDefault();
+        if (activeEmailTrigger === trigger && emailPopover.classList.contains('open')) {
+          closeEmailPopover();
+        } else {
+          openEmailPopover(trigger);
+        }
+        return;
+      }
+
+      var action = e.target.closest('[data-action]');
+      if (action && emailPopover.contains(action)) {
+        var kind = action.getAttribute('data-action');
+        if (kind === 'gmail') {
+          e.preventDefault();
+          window.open(GMAIL_COMPOSE_URL, '_blank', 'noopener');
+          closeEmailPopover();
+        } else if (kind === 'copy') {
+          e.preventDefault();
+          copyEmailAddress(action);
+        } else if (kind === 'mailapp') {
+          closeEmailPopover();
+        }
+        return;
+      }
+
+      if (emailPopover.classList.contains('open') && !emailPopover.contains(e.target)) {
+        closeEmailPopover();
+      }
+    });
+
+    window.addEventListener('scroll', function () {
+      if (emailPopover.classList.contains('open')) closeEmailPopover();
+    }, true);
+    window.addEventListener('resize', function () {
+      if (emailPopover.classList.contains('open')) closeEmailPopover();
+    });
+  }
+
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     if (activeModal) closeModal(activeModal);
     if (lightbox && lightbox.classList.contains('open')) closeLightbox();
+    closeEmailPopover();
   });
 
   /* ---------- Formspree AJAX submission ---------- */
