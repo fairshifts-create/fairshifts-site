@@ -20,7 +20,8 @@ window.FAIRSHIFTS_I18N = {
     'hero.eyebrow': 'Done-for-you staff rostering',
     'hero.h1': 'Stop losing a full day every month to the rota — and still getting complaints about it.',
     'hero.lead': 'Fair rosters, built for you — delivered in 48 hours, usually much faster. Send your staff list and shift rules; we handle the rest.',
-    'hero.seeExample': 'See a real example',
+    'hero.seePlans': 'See plans',
+    'hero.scroll': 'Scroll',
 
     /* pain points */
     'pain.eyebrow': 'The problem',
@@ -105,6 +106,12 @@ window.FAIRSHIFTS_I18N = {
     'testi.quote3': '"Placeholder — replace with a real quote about staff complaints going down."',
     'testi.name': 'Full Name',
     'testi.role': 'Role, Care Home Name',
+
+    /* founder note (shown instead of testimonials until SHOW_TESTIMONIALS is true) */
+    'founder.eyebrow': 'Why FairShifts',
+    'founder.h2': "Built by someone who's done the rota",
+    'founder.body': "For years I managed rosters for a large frontline team — the spreadsheets, the fairness complaints, the hours lost every month just getting the schedule out. FairShifts exists because I got tired of that scramble and decided to build the tool I wished I'd had. Every roster we deliver is built the way I'd want mine built — fair, fast, and right the first time.",
+    'founder.signoff': '— Sam',
 
     /* FAQ */
     'faq.eyebrow': 'FAQ',
@@ -219,7 +226,8 @@ window.FAIRSHIFTS_I18N = {
     'hero.eyebrow': 'خدمة جدولة الموظفين بالكامل نيابةً عنك',
     'hero.h1': 'توقف عن إضاعة يوم كامل كل شهر في إعداد الجدول — وسط شكاوى لا تنتهي.',
     'hero.lead': 'جداول عمل عادلة، نُعدّها لك بالكامل، وتصل خلال 48 ساعة، وغالبًا أسرع من ذلك. أرسل لنا قائمة موظفيك وقواعد المناوبات، ونتولى الباقي.',
-    'hero.seeExample': 'شاهد نموذجًا حقيقيًا',
+    'hero.seePlans': 'اطّلع على الباقات',
+    'hero.scroll': 'مرر للأسفل',
 
     /* pain points */
     'pain.eyebrow': 'المشكلة',
@@ -304,6 +312,12 @@ window.FAIRSHIFTS_I18N = {
     'testi.quote3': '"نص مؤقت — استبدله بتقييم حقيقي عن انخفاض شكاوى الموظفين."',
     'testi.name': 'الاسم الكامل',
     'testi.role': 'المسمى الوظيفي، اسم دار الرعاية',
+
+    /* founder note (shown instead of testimonials until SHOW_TESTIMONIALS is true) */
+    'founder.eyebrow': 'لماذا FairShifts',
+    'founder.h2': 'بُني بواسطة شخص عاش تجربة الجدولة بنفسه',
+    'founder.body': 'لسنوات عديدة كنت أدير جداول عمل لفريق ميداني كبير — جداول البيانات، شكاوى عدم العدالة، والساعات الضائعة كل شهر لمجرد إخراج الجدول. أنشأت FairShifts لأنني سئمت من هذا الجهد المتكرر وقررت بناء الأداة التي كنت أتمنى لو كانت لدي. كل جدول نسلمه يُبنى بالطريقة التي كنت أتمنى أن يُبنى بها جدولي — عادل، سريع، وصحيح من أول مرة.',
+    'founder.signoff': '— سام',
 
     /* FAQ */
     'faq.eyebrow': 'الأسئلة الشائعة',

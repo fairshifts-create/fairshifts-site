@@ -66,14 +66,24 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-sheet hero-sheet--back"></div>
+      <div class="hero-sheet hero-sheet--front">
+        <div class="roster-grid"></div>
+      </div>
+    </div>
     <div class="container hero-inner reveal">
       <span class="eyebrow" data-i18n="hero.eyebrow">Done-for-you staff rostering</span>
       <h1 data-i18n="hero.h1">Stop losing a full day every month to the rota — and still getting complaints about it.</h1>
       <p class="lead" data-i18n="hero.lead">Fair rosters, built for you — delivered in 48 hours, usually much faster. Send your staff list and shift rules; we handle the rest.</p>
       <div class="hero-actions">
-        <a href="#showcase" class="btn btn-secondary" data-i18n="hero.seeExample">See a real example</a>
-        <a href="#" class="btn btn-primary" data-open-modal="modal-free-roster" data-i18n="nav.getFreeRoster">Get your first roster free</a>
+        <a href="#pricing" class="btn btn-primary" data-i18n="hero.seePlans">See plans</a>
+        <a href="#how-it-works" class="btn btn-secondary" data-i18n="nav.howItWorks">How It Works</a>
       </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span data-i18n="hero.scroll">Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
     </div>
   </section>
 
@@ -240,31 +250,46 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
+  <!-- ============ TESTIMONIALS / FOUNDER NOTE ============ -->
+  <!-- Toggled by SHOW_TESTIMONIALS in script.js. Testimonial cards stay in the
+       markup (hidden) so real quotes can be dropped in later just by editing
+       the data-i18n strings in translations.js and flipping the flag. -->
   <section class="section section-soft" id="testimonials">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" data-i18n="testi.eyebrow">What managers say</span>
-        <h2 data-i18n="testi.h2">Trusted by teams who used to dread the rota</h2>
+      <div id="testimonials-block">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="testi.eyebrow">What managers say</span>
+          <h2 data-i18n="testi.h2">Trusted by teams who used to dread the rota</h2>
+        </div>
+        <div class="grid-3 reveal-group">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote" data-i18n="testi.quote1">"Placeholder — replace with a real quote about the time saved each month."</p>
+            <div class="testi-name" data-i18n="testi.name">Full Name</div>
+            <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote" data-i18n="testi.quote2">"Placeholder — replace with a real quote about coverage gaps disappearing."</p>
+            <div class="testi-name" data-i18n="testi.name">Full Name</div>
+            <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote" data-i18n="testi.quote3">"Placeholder — replace with a real quote about staff complaints going down."</p>
+            <div class="testi-name" data-i18n="testi.name">Full Name</div>
+            <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
+          </div>
+        </div>
       </div>
-      <div class="grid-3 reveal-group">
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote" data-i18n="testi.quote1">"Placeholder — replace with a real quote about the time saved each month."</p>
-          <div class="testi-name" data-i18n="testi.name">Full Name</div>
-          <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
+      <div id="founder-note-block">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="founder.eyebrow">Why FairShifts</span>
+          <h2 data-i18n="founder.h2">Built by someone who's done the rota</h2>
         </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote" data-i18n="testi.quote2">"Placeholder — replace with a real quote about coverage gaps disappearing."</p>
-          <div class="testi-name" data-i18n="testi.name">Full Name</div>
-          <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
-        </div>
-        <div class="testi-card">
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-quote" data-i18n="testi.quote3">"Placeholder — replace with a real quote about staff complaints going down."</p>
-          <div class="testi-name" data-i18n="testi.name">Full Name</div>
-          <div class="testi-role" data-i18n="testi.role">Role, Care Home Name</div>
+        <div class="founder-note reveal">
+          <p data-i18n="founder.body">For years I managed rosters for a large frontline team — the spreadsheets, the fairness complaints, the hours lost every month just getting the schedule out. FairShifts exists because I got tired of that scramble and decided to build the tool I wished I'd had. Every roster we deliver is built the way I'd want mine built — fair, fast, and right the first time.</p>
+          <p class="founder-signoff" data-i18n="founder.signoff">— [Your first name]</p>
         </div>
       </div>
     </div>
