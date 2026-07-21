@@ -92,7 +92,6 @@ body{
   opacity:0;transition:opacity .6s ease,filter .3s ease;
   will-change:opacity;
 }
-.site-bg{will-change:transform}
 .site-bg-img--light{opacity:1}
 [data-theme="dark"] .site-bg-img--light{opacity:0}
 [data-theme="dark"] .site-bg-img--dark{opacity:1}
@@ -101,10 +100,6 @@ body{
   opacity:var(--bg-overlay-opacity);
   transition:opacity .3s ease,background-color .3s ease;
 }
-@supports (animation-timeline: scroll()){
-  .site-bg{animation:siteBgDrift linear both;animation-timeline:scroll(root block);animation-range:0 100vh}
-}
-@keyframes siteBgDrift{from{transform:translateY(0)}to{transform:translateY(-28px)}}
 .site-nav,.card,.price-card,details.faq,.testi-card,.shot,footer,
 .form-field input,.form-field select,.form-field textarea,.modal,.lang-toggle{
   transition:background-color .25s ease,color .25s ease,border-color .25s ease;

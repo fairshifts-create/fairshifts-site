@@ -13,29 +13,6 @@
     founderNoteBlock.style.display = SHOW_TESTIMONIALS ? 'none' : '';
   }
 
-  /* ---------- site background parallax drift ---------- */
-  /* Pure CSS (animation-timeline: scroll()) wherever supported — see the
-     @supports block in style.css. This is only the fallback for browsers
-     that don't support it yet, and skips entirely under
-     prefers-reduced-motion so the background stays fully static. */
-  (function () {
-    var siteBg = document.querySelector('.site-bg');
-    if (!siteBg) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()')) return;
-
-    var range = window.innerHeight;
-    var ticking = false;
-    function update() {
-      var progress = Math.min(1, window.scrollY / range);
-      siteBg.style.transform = 'translateY(' + (progress * -28) + 'px)';
-      ticking = false;
-    }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { requestAnimationFrame(update); ticking = true; }
-    }, { passive: true });
-  })();
-
   /* ---------- language switch (i18n) ---------- */
   /* Runs first, synchronously, so translated text (if Arabic is the saved/
      detected language) appears as soon as this script executes — the <head>
