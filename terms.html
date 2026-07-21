@@ -29,6 +29,19 @@
 </head>
 <body>
 
+<div class="site-bg" aria-hidden="true">
+<script>
+(function(){
+  var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var other = theme === 'dark' ? 'light' : 'dark';
+  document.write(
+    '<img class="site-bg-img site-bg-img--' + theme + '" src="images/bg-' + theme + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + theme + '.png\'" alt="" fetchpriority="high">' +
+    '<img class="site-bg-img site-bg-img--' + other + '" src="images/bg-' + other + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + other + '.png\'" alt="" loading="lazy">'
+  );
+})();
+</script>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">

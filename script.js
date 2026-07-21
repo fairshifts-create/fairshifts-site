@@ -13,6 +13,29 @@
     founderNoteBlock.style.display = SHOW_TESTIMONIALS ? 'none' : '';
   }
 
+  /* ---------- site background parallax drift ---------- */
+  /* Pure CSS (animation-timeline: scroll()) wherever supported — see the
+     @supports block in style.css. This is only the fallback for browsers
+     that don't support it yet, and skips entirely under
+     prefers-reduced-motion so the background stays fully static. */
+  (function () {
+    var siteBg = document.querySelector('.site-bg');
+    if (!siteBg) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()')) return;
+
+    var range = window.innerHeight;
+    var ticking = false;
+    function update() {
+      var progress = Math.min(1, window.scrollY / range);
+      siteBg.style.transform = 'translateY(' + (progress * -28) + 'px)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+  })();
+
   /* ---------- language switch (i18n) ---------- */
   /* Runs first, synchronously, so translated text (if Arabic is the saved/
      detected language) appears as soon as this script executes — the <head>
@@ -144,63 +167,13 @@
     revealTargets.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- hero background roster grid ---------- */
-  /* Built at runtime instead of hand-written markup so the sheet can be
-     tall enough to fill the full hero background on any viewport. Names
-     and shift codes are fictional and fixed (not random) so the layout
-     never shifts between loads. */
+  /* ---------- hero scroll cue ---------- */
   (function () {
-    var grid = document.querySelector('.roster-grid');
-    if (!grid) return;
-    var days = ['Mon 3', 'Tue 4', 'Wed 5', 'Thu 6', 'Fri 7', 'Sat 8', 'Sun 9'];
-    var names = ['Layla', 'Omar', 'Farah', 'Zainab', 'Youssef', 'Maya', 'Hassan', 'Noor', 'Karim', 'Salma', 'Rami', 'Dina', 'Tariq'];
-    var codes = ['D', 'N', 'O'];
-    var html = '<div class="roster-row roster-head"><div class="roster-cell roster-corner"></div>' +
-      days.map(function (d) { return '<div class="roster-cell">' + d + '</div>'; }).join('') +
-      '</div>';
-    names.forEach(function (name, row) {
-      html += '<div class="roster-row"><div class="roster-cell roster-name">' + name + '</div>';
-      for (var col = 0; col < days.length; col++) {
-        var code = codes[(row * 2 + col) % 3];
-        html += '<div class="roster-cell"><span class="chip chip-' + code.toLowerCase() + '">' + code + '</span></div>';
-      }
-      html += '</div>';
-    });
-    grid.innerHTML = html;
-  })();
-
-  /* ---------- hero parallax ---------- */
-  /* Parallax is pure CSS (animation-timeline: scroll()) wherever supported —
-     see the @supports block in style.css. This only runs as a fallback for
-     browsers that don't support it yet, and skips entirely under
-     prefers-reduced-motion so the hero stays fully static for those users. */
-  (function () {
-    var heroBg = document.querySelector('.hero-bg');
-    if (!heroBg) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
     var scrollCue = document.querySelector('.scroll-cue');
-    if (scrollCue) {
-      window.addEventListener('scroll', function () {
-        scrollCue.classList.toggle('is-hidden', window.scrollY > 40);
-      }, { passive: true });
-    }
-
-    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()')) return;
-
-    var back = heroBg.querySelector('.hero-sheet--back');
-    var front = heroBg.querySelector('.hero-sheet--front');
-    var range = 700;
-    var ticking = false;
-
-    function update() {
-      var progress = Math.min(1, window.scrollY / range);
-      if (front) front.style.transform = 'translateY(' + (progress * -22) + 'px)';
-      if (back) back.style.transform = 'rotate(-1deg) translateY(' + (progress * -54) + 'px)';
-      ticking = false;
-    }
+    if (!scrollCue) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     window.addEventListener('scroll', function () {
-      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      scrollCue.classList.toggle('is-hidden', window.scrollY > 40);
     }, { passive: true });
   })();
 

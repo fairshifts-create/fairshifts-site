@@ -29,6 +29,19 @@
 </head>
 <body>
 
+<div class="site-bg" aria-hidden="true">
+<script>
+(function(){
+  var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var other = theme === 'dark' ? 'light' : 'dark';
+  document.write(
+    '<img class="site-bg-img site-bg-img--' + theme + '" src="images/bg-' + theme + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + theme + '.png\'" alt="" fetchpriority="high">' +
+    '<img class="site-bg-img site-bg-img--' + other + '" src="images/bg-' + other + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + other + '.png\'" alt="" loading="lazy">'
+  );
+})();
+</script>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -54,26 +67,95 @@
 </header>
 
 <main class="legal">
-  <div class="placeholder-notice" data-i18n="privacy.placeholderNotice">
-    This is placeholder text. Replace everything below with your finalized Privacy Policy — see the "how to edit" notes for exactly which file this is.
-  </div>
   <h1 data-i18n="privacy.h1">Privacy Policy</h1>
-  <p class="updated" data-i18n="legal.updated">Last updated: [add date]</p>
+  <p class="updated"><span data-i18n="privacy.updated">Last updated: July 19, 2026</span></p>
 
-  <h2 data-i18n="privacy.introH2">Introduction</h2>
-  <p data-i18n="privacy.introBody">[Placeholder] FairShifts ("we", "us") provides done-for-you staff rostering services. This policy explains what information we collect from you and the staff data you send us, and how we use it.</p>
+  <nav class="legal-toc" aria-label="Table of contents">
+    <p class="legal-toc-label" data-i18n="legal.tocLabel">On this page</p>
+    <ol>
+      <li><a href="#intro" data-i18n="privacy.introH2">Introduction</a></li>
+      <li><a href="#collect" data-i18n="privacy.collectH2">What we collect</a></li>
+      <li><a href="#use" data-i18n="privacy.useH2">How we use it</a></li>
+      <li><a href="#share" data-i18n="privacy.shareH2">Who we share it with</a></li>
+      <li><a href="#retention" data-i18n="privacy.retentionH2">Data retention</a></li>
+      <li><a href="#rights" data-i18n="privacy.rightsH2">Your rights</a></li>
+      <li><a href="#security" data-i18n="privacy.securityH2">Security</a></li>
+      <li><a href="#cookies" data-i18n="privacy.cookiesH2">Cookies &amp; analytics</a></li>
+      <li><a href="#contact" data-i18n="legal.contactH2">Contact</a></li>
+    </ol>
+  </nav>
 
-  <h2 data-i18n="privacy.collectH2">What we collect</h2>
-  <p data-i18n="privacy.collectBody">[Placeholder] To build your roster, we typically only need first names or anonymized staff IDs, along with shift availability and scheduling rules. We do not require or request sensitive personal data such as addresses, ID numbers, or phone numbers.</p>
+  <section class="legal-section" id="intro">
+    <h2 data-i18n="privacy.introH2">Introduction</h2>
+    <p data-i18n="privacy.introBody">FairShifts ("we", "us") provides done-for-you staff rostering services for care homes and security firms. This policy explains what we collect, why, and your rights.</p>
+  </section>
 
-  <h2 data-i18n="privacy.useH2">How we use it</h2>
-  <p data-i18n="privacy.useBody">[Placeholder] Information you send us is used solely to build, validate, and deliver your staff roster, and to communicate with you about your order.</p>
+  <section class="legal-section" id="collect">
+    <h2 data-i18n="privacy.collectH2">What we collect</h2>
+    <p data-i18n="privacy.collectIntro">Your contact details (name, email, organisation) when you subscribe or message us.</p>
+    <div class="legal-two-col">
+      <div>
+        <p class="legal-list-title" data-i18n="privacy.collectYesTitle">What we collect</p>
+        <ul class="legal-check-list list-yes">
+          <li data-i18n="privacy.collectYes1">Staff first names or anonymised IDs</li>
+          <li data-i18n="privacy.collectYes2">Roles</li>
+          <li data-i18n="privacy.collectYes3">Teams</li>
+          <li data-i18n="privacy.collectYes4">Contracted hours</li>
+          <li data-i18n="privacy.collectYes5">Availability and leave dates</li>
+          <li data-i18n="privacy.collectYes6">Your scheduling rules</li>
+        </ul>
+      </div>
+      <div>
+        <p class="legal-list-title" data-i18n="privacy.collectNoTitle">What we never ask for</p>
+        <ul class="legal-check-list list-no">
+          <li data-i18n="privacy.collectNo1">Staff surnames</li>
+          <li data-i18n="privacy.collectNo2">Addresses</li>
+          <li data-i18n="privacy.collectNo3">Dates of birth</li>
+          <li data-i18n="privacy.collectNo4">ID numbers</li>
+          <li data-i18n="privacy.collectNo5">Phone numbers</li>
+          <li data-i18n="privacy.collectNo6">Health information</li>
+          <li data-i18n="privacy.collectNo7">Bank details</li>
+        </ul>
+      </div>
+    </div>
+    <p data-i18n="privacy.collectPayments">We don't yet collect payments directly through this website — when online billing launches for our Pro and Business plans, it will go through Stripe's secure checkout, and card numbers will never touch our systems.</p>
+  </section>
 
-  <h2 data-i18n="privacy.retentionH2">Data retention</h2>
-  <p data-i18n="privacy.retentionBody">[Placeholder] Describe how long you keep uploaded staff lists and roster files, and how customers can request deletion.</p>
+  <section class="legal-section" id="use">
+    <h2 data-i18n="privacy.useH2">How we use it</h2>
+    <p data-i18n="privacy.useBody">Solely to build, check, and deliver your rosters, manage your subscription, and reply to you. We never sell data or use it for advertising.</p>
+  </section>
 
-  <h2 data-i18n="legal.contactH2">Contact</h2>
-  <p data-i18n-html="privacy.contactBodyHtml">Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.</p>
+  <section class="legal-section" id="share">
+    <h2 data-i18n="privacy.shareH2">Who we share it with</h2>
+    <p data-i18n-html="privacy.shareBodyHtml">Only the services that run FairShifts: Formspree (intake forms), Google Drive (file storage), and Vercel (website hosting).</p>
+    <p data-i18n-html="privacy.shareBody2Html">Once online billing launches, <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> (payments) will be added to this list. No one else.</p>
+  </section>
+
+  <section class="legal-section" id="retention">
+    <h2 data-i18n="privacy.retentionH2">Data retention</h2>
+    <p data-i18n="privacy.retentionBody">We keep your roster files and intake data while you're a customer. If you cancel, everything is deleted within 90 days. Invoices are kept as long as tax law requires.</p>
+  </section>
+
+  <section class="legal-section" id="rights">
+    <h2 data-i18n="privacy.rightsH2">Your rights</h2>
+    <p data-i18n="privacy.rightsBody">Email us anytime for a copy of your data or to have it deleted; we respond within one month. You can also complain to the data protection authority in the United Arab Emirates.</p>
+  </section>
+
+  <section class="legal-section" id="security">
+    <h2 data-i18n="privacy.securityH2">Security</h2>
+    <p data-i18n="privacy.securityBody">Two-factor authentication on our accounts and minimal data collection by design. Once online payments launch, they'll be handled by PCI-DSS certified Stripe.</p>
+  </section>
+
+  <section class="legal-section" id="cookies">
+    <h2 data-i18n="privacy.cookiesH2">Cookies &amp; analytics</h2>
+    <p data-i18n="privacy.cookiesBody">This website uses no tracking cookies and no advertising trackers.</p>
+  </section>
+
+  <section class="legal-section" id="contact">
+    <h2 data-i18n="legal.contactH2">Contact</h2>
+    <p data-i18n-html="privacy.contactBodyHtml">Questions about this policy can be sent to <a href="mailto:fairshifts@gmail.com" class="email-trigger">fairshifts@gmail.com</a>.</p>
+  </section>
 </main>
 
 <footer>

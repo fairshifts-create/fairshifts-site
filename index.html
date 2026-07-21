@@ -32,6 +32,19 @@
 </head>
 <body>
 
+<div class="site-bg" aria-hidden="true">
+<script>
+(function(){
+  var theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  var other = theme === 'dark' ? 'light' : 'dark';
+  document.write(
+    '<img class="site-bg-img site-bg-img--' + theme + '" src="images/bg-' + theme + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + theme + '.png\'" alt="" fetchpriority="high">' +
+    '<img class="site-bg-img site-bg-img--' + other + '" src="images/bg-' + other + '.webp" onerror="this.onerror=null;this.src=\'images/bg-' + other + '.png\'" alt="" loading="lazy">'
+  );
+})();
+</script>
+</div>
+
 <header class="site-nav">
   <div class="nav-inner">
     <a href="#top" class="brand">
@@ -66,12 +79,6 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-sheet hero-sheet--back"></div>
-      <div class="hero-sheet hero-sheet--front">
-        <div class="roster-grid"></div>
-      </div>
-    </div>
     <div class="container hero-inner reveal">
       <span class="eyebrow" data-i18n="hero.eyebrow">Done-for-you staff rostering</span>
       <h1 data-i18n="hero.h1">Stop losing a full day every month to the rota — and still getting complaints about it.</h1>
@@ -335,7 +342,7 @@
         <p data-i18n="finalCta.lead">Your first roster is free — see what FairShifts can do before you commit to anything.</p>
         <div class="hero-actions">
           <a href="#" class="btn btn-primary" data-open-modal="modal-free-roster" data-i18n="nav.getFreeRoster">Get your first roster free</a>
-          <a href="mailto:fairshifts@gmail.com" class="btn btn-ghost-light email-trigger" data-i18n="finalCta.emailInstead">Email us instead</a>
+          <a href="mailto:fairshifts@gmail.com" class="btn btn-secondary email-trigger" data-i18n="finalCta.emailInstead">Email us instead</a>
         </div>
         <p class="final-cta-note">
           <span data-i18n="finalCta.orEmail">Or reach us directly:</span>
